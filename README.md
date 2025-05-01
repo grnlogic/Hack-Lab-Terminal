@@ -21,13 +21,13 @@ The simulator includes the following vulnerabilities:
 
 ### Startup Screen
 
-![Hack-Lab Startup Screen](https://i.ibb.co/dwZbYBPz/Screenshot-from-2025-05-01-23-35-16.png)
+![Hack-Lab Startup Screen](./images/Screenshot%20from%202025-05-01%2023-35-16.png)
 _The initial terminal interface when launching Hack-Lab_
 
 ### Main Menu
 
-![Hack-Lab Main Menu](https://i.ibb.co/hR84jjfB/Screenshot-from-2025-05-01-23-35-28.png)
-_The main menu showing all available tools_
+![Hack-Lab Main Menu](./images/Screenshot%20from%202025-05-01%2023-35-28.png)
+_The mountain-themed main menu showing all available tools_
 
 ## 📋 Components
 
