@@ -71,6 +71,24 @@ class HackLabTerminal:
         result = subprocess.run([sys.executable, "tool_upload.py"], capture_output=True, text=True)
         console.print(Panel(result.stdout, title="Upload Bypass Results", border_style="yellow"))
     
+    def run_command_tool(self):
+        """Run the Command Injection tool"""
+        console.print("[bold cyan]Running Command Injection Tool...[/]")
+        result = subprocess.run([sys.executable, "tool_command.py"], capture_output=True, text=True)
+        console.print(Panel(result.stdout, title="Command Injection Results", border_style="cyan"))
+
+    def run_traversal_tool(self):
+        """Run the Path Traversal tool"""
+        console.print("[bold green]Running Path Traversal Tool...[/]")
+        result = subprocess.run([sys.executable, "tool_traversal.py"], capture_output=True, text=True)
+        console.print(Panel(result.stdout, title="Path Traversal Results", border_style="green"))
+
+    def run_csrf_tool(self):
+        """Run the CSRF tool"""
+        console.print("[bold purple]Running CSRF Tool...[/]")
+        result = subprocess.run([sys.executable, "tool_csrf.py"], capture_output=True, text=True)
+        console.print(Panel(result.stdout, title="CSRF Attack Results", border_style="purple"))
+
     def show_menu(self):
         """Display the main menu"""
         table = Table(show_header=True, header_style="bold cyan")
@@ -83,7 +101,10 @@ class HackLabTerminal:
         table.add_row("3", "[blue]SQL Injection[/]", "Run SQL Injection test tool")
         table.add_row("4", "[magenta]XSS Test[/]", "Run Cross-Site Scripting test tool")
         table.add_row("5", "[yellow]Upload Bypass[/]", "Run File Upload Bypass test tool")
-        table.add_row("6", "[cyan]View Server Status[/]", "Check if the server is running")
+        table.add_row("6", "[cyan]Command Injection[/]", "Run Command Injection test tool")
+        table.add_row("7", "[green]Path Traversal[/]", "Run Path Traversal test tool")
+        table.add_row("8", "[purple]CSRF Attack[/]", "Run Cross-Site Request Forgery test tool")
+        table.add_row("9", "[cyan]View Server Status[/]", "Check if the server is running")
         table.add_row("0", "[bold red]Exit[/]", "Exit the program")
         
         console.print(Panel(table, title="[bold]Hack-Lab Terminal[/]", 
@@ -97,7 +118,7 @@ class HackLabTerminal:
         while True:
             self.show_menu()
             
-            choice = Prompt.ask("Enter your choice", choices=["0", "1", "2", "3", "4", "5", "6"], default="1")
+            choice = Prompt.ask("Enter your choice", choices=["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"], default="1")
             
             if choice == "0":
                 if self.server_running:
@@ -115,6 +136,12 @@ class HackLabTerminal:
             elif choice == "5":
                 self.run_upload_tool()
             elif choice == "6":
+                self.run_command_tool()
+            elif choice == "7":
+                self.run_traversal_tool()
+            elif choice == "8":
+                self.run_csrf_tool()
+            elif choice == "9":
                 status = "Running" if self.server_running else "Stopped"
                 color = "green" if self.server_running else "red"
                 console.print(f"Server status: [{color}]{status}[/]")

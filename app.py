@@ -13,6 +13,9 @@ def index():
         <li><a href='/sqli'>SQL Injection Form</a></li>
         <li><a href='/xss'>XSS Test</a></li>
         <li><a href='/upload'>Upload Bypass</a></li>
+        <li><a href='/command'>Command Injection</a></li>
+        <li><a href='/traversal'>Path Traversal</a></li>
+        <li><a href='/csrf'>CSRF Vulnerability</a></li>
     </ul>
     """
 
@@ -58,6 +61,64 @@ def upload():
     <form method='POST' enctype='multipart/form-data'>
         File: <input type='file' name='file'>
         <button type='submit'>Upload</button>
+    </form>
+    <p>{message}</p>
+    """
+
+@app.route("/command", methods=["GET", "POST"])
+def command_injection():
+    output = ""
+    if request.method == "POST":
+        ip = request.form['ip']
+        # Vulnerable command injection
+        cmd = f"ping -c 1 {ip}"
+        try:
+            output = os.popen(cmd).read()
+        except:
+            output = "Error executing command"
+    return f"""
+    <h3>Command Injection Demo</h3>
+    <form method='POST'>
+        IP to ping: <input name='ip' placeholder="8.8.8.8">
+        <button type='submit'>Ping</button>
+    </form>
+    <pre>{output}</pre>
+    """
+
+@app.route("/traversal", methods=["GET"])
+def path_traversal():
+    file = request.args.get('file', 'safe.txt')
+    try:
+        # Vulnerable path traversal
+        with open(file, 'r') as f:
+            content = f.read()
+    except:
+        content = f"Error: Could not read file {file}"
+    return f"""
+    <h3>Path Traversal Demo</h3>
+    <p>Current file: {file}</p>
+    <p>Content:</p>
+    <pre>{content}</pre>
+    <p>Try to access another file using the 'file' parameter.</p>
+    """
+
+@app.route("/csrf", methods=["GET", "POST"])
+def csrf():
+    message = ""
+    action = ""
+    if request.method == "POST":
+        action = request.form.get('action', '')
+        if action == "transfer":
+            amount = request.form.get('amount', '0')
+            to = request.form.get('to', 'nobody')
+            message = f"Transferred ${amount} to {to}"
+    return f"""
+    <h3>CSRF Vulnerability Demo</h3>
+    <form method='POST'>
+        <input type='hidden' name='action' value='transfer'>
+        Amount: <input name='amount' type='number' value='100'>
+        To Account: <input name='to' value='friend'>
+        <button type='submit'>Transfer</button>
     </form>
     <p>{message}</p>
     """

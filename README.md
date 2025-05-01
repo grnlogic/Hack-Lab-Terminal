@@ -11,6 +11,9 @@ The simulator includes the following vulnerabilities:
 - **SQL Injection**: Practice breaking SQL query integrity
 - **Cross-Site Scripting (XSS)**: Experiment with inserting malicious scripts
 - **File Upload Bypass**: Test file upload security controls
+- **Command Injection**: Exploit vulnerable command execution
+- **Path Traversal**: Access unauthorized files on the server
+- **Cross-Site Request Forgery (CSRF)**: Execute unwanted actions on behalf of users
 
 ## 📋 Components
 
@@ -60,6 +63,9 @@ The simulator includes the following vulnerabilities:
    python tool_sqli.py    # SQL Injection test
    python tool_xss.py     # XSS test
    python tool_upload.py  # File upload bypass test
+   python tool_command.py # Command Injection test
+   python tool_traversal.py # Path Traversal test
+   python tool_csrf.py    # CSRF test
    ```
 
 3. Access the web interface at [http://localhost:5000](http://localhost:5000)
@@ -69,6 +75,9 @@ The simulator includes the following vulnerabilities:
 - **SQL Injection**: [http://localhost:5000/sqli](http://localhost:5000/sqli)
 - **XSS**: [http://localhost:5000/xss](http://localhost:5000/xss)
 - **Upload Bypass**: [http://localhost:5000/upload](http://localhost:5000/upload)
+- **Command Injection**: [http://localhost:5000/command](http://localhost:5000/command)
+- **Path Traversal**: [http://localhost:5000/traversal](http://localhost:5000/traversal)
+- **CSRF**: [http://localhost:5000/csrf](http://localhost:5000/csrf)
 
 ## ⚠️ Disclaimer
 
@@ -92,6 +101,21 @@ For each vulnerability demonstrated, the README includes mitigation strategies:
 - Validate file extensions and content types
 - Scan uploads for malware
 - Store uploads outside the web root
+
+### Command Injection Prevention
+- Avoid using system commands with user input
+- Implement strict input validation and whitelisting
+- Use libraries that handle command execution safely
+
+### Path Traversal Prevention
+- Validate and sanitize file paths
+- Use path canonicalization
+- Implement proper access controls
+
+### CSRF Prevention
+- Implement anti-CSRF tokens
+- Use SameSite cookie attribute
+- Verify the Origin/Referer header
 
 ## 📝 License
 
