@@ -14,109 +14,117 @@ The simulator includes the following vulnerabilities:
 - **Command Injection**: Exploit vulnerable command execution
 - **Path Traversal**: Access unauthorized files on the server
 - **Cross-Site Request Forgery (CSRF)**: Execute unwanted actions on behalf of users
+- **Password Analysis**: Test password strength against cracking attempts
+- **Web Reconnaissance**: Gather information about domains and websites
+
+## 📸 Screenshots
+
+### Startup Screen
+
+![Hack-Lab Startup Screen](https://i.ibb.co.com/dwZbYBPz/Screenshot-from-2025-05-01-23-35-16.png)
+_The initial terminal interface when launching Hack-Lab_
+
+### Main Menu
+
+![Hack-Lab Main Menu](https://i.ibb.co.com/hR84jjfB/Screenshot-from-2025-05-01-23-35-28.png)
+_The main menu showing all available tools_
 
 ## 📋 Components
 
 - **Vulnerable Flask App**: A deliberately insecure web application
 - **Attack Tools**: Python scripts to demonstrate exploits
 - **Terminal GUI**: Easy-to-use terminal interface for controlling the lab
+- **Password Strength Analyzer**: Tool to evaluate password security
+- **Reconnaissance Framework**: Tools for gathering OSINT on websites
 
-## 🛠️ Installation
+## 🚀 Getting Started
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/yourusername/hack-lab.git
-   cd hack-lab
+### Prerequisites
+
+- Python 3.6+
+- pip (Python package manager)
+
+### Installation
+
+1. Clone the repository
+
+   ```
+   git clone https://github.com/yourusername/Hack-lab.git
+   cd Hack-lab
    ```
 
-2. Create and activate a virtual environment:
-   ```bash
-   python3 -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
-   ```
+2. Install dependencies
 
-3. Install dependencies:
-   ```bash
+   ```
    pip install -r requirements.txt
    ```
 
-## 🚀 Usage
-
-### Option 1: Terminal GUI
-
-1. Launch the terminal interface:
-   ```bash
+3. Run the terminal interface
+   ```
    python terminal_gui.py
    ```
 
-2. Use the menu to start the server and run various attack tools.
-
-### Option 2: Manual Execution
-
-1. Start the vulnerable server:
-   ```bash
-   python app.py
-   ```
-
-2. Run individual attack tools:
-   ```bash
-   python tool_sqli.py    # SQL Injection test
-   python tool_xss.py     # XSS test
-   python tool_upload.py  # File upload bypass test
-   python tool_command.py # Command Injection test
-   python tool_traversal.py # Path Traversal test
-   python tool_csrf.py    # CSRF test
-   ```
-
-3. Access the web interface at [http://localhost:5000](http://localhost:5000)
-
-## 💻 Vulnerable Endpoints
-
-- **SQL Injection**: [http://localhost:5000/sqli](http://localhost:5000/sqli)
-- **XSS**: [http://localhost:5000/xss](http://localhost:5000/xss)
-- **Upload Bypass**: [http://localhost:5000/upload](http://localhost:5000/upload)
-- **Command Injection**: [http://localhost:5000/command](http://localhost:5000/command)
-- **Path Traversal**: [http://localhost:5000/traversal](http://localhost:5000/traversal)
-- **CSRF**: [http://localhost:5000/csrf](http://localhost:5000/csrf)
-
-## ⚠️ Disclaimer
-
-This project is designed for educational purposes only. The vulnerabilities are intentional for learning about web security. Never use these techniques against systems without explicit permission. Always practice ethical hacking.
-
 ## 🔒 Security Tips
 
-For each vulnerability demonstrated, the README includes mitigation strategies:
-
 ### SQL Injection Prevention
+
 - Use parameterized queries
 - Implement input validation
-- Apply the principle of least privilege for database users
+- Apply the principle of least privilege for database accounts
 
 ### XSS Prevention
-- Sanitize user input
+
+- Sanitize and validate all user inputs
 - Implement Content Security Policy (CSP)
-- Use frameworks that automatically escape output
+- Use modern frameworks that automatically escape output
 
 ### File Upload Security
+
 - Validate file extensions and content types
-- Scan uploads for malware
+- Scan uploaded files for malware
 - Store uploads outside the web root
 
-### Command Injection Prevention
-- Avoid using system commands with user input
-- Implement strict input validation and whitelisting
-- Use libraries that handle command execution safely
+### Command Injection Defense
 
-### Path Traversal Prevention
-- Validate and sanitize file paths
-- Use path canonicalization
+- Avoid using shell commands with user input
+- Implement strict input validation
+- Use safer alternatives to shell commands
+
+### Path Traversal Protection
+
+- Normalize file paths before use
 - Implement proper access controls
+- Use safe APIs for file operations
 
-### CSRF Prevention
+### CSRF Protection
+
 - Implement anti-CSRF tokens
 - Use SameSite cookie attribute
-- Verify the Origin/Referer header
+- Verify Origin and Referer headers
+
+### Password Security
+
+- Enforce strong password policies
+- Use secure password hashing (bcrypt, Argon2)
+- Implement multi-factor authentication
+
+### Reconnaissance Best Practices
+
+- Obtain proper authorization before performing reconnaissance on any system
+- Document all findings and maintain a clear audit trail
+- Use proxies or VPNs when appropriate to protect your identity
+- Be aware of and comply with relevant laws and regulations
+- Limit the scope of your reconnaissance to avoid disrupting services
 
 ## 📝 License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## 🙏 Acknowledgments
+
+- Made with ❤️ by grnlogic
+- All the open-source tools that inspired this project

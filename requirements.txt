@@ -2,3 +2,6 @@ flask
 requests
 beautifulsoup4
 rich
+zxcvbn
+dnspython
+python-whois
